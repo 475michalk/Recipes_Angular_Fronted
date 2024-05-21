@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .background {
+    background-color: hsl(13.47deg 29.7% 32.35%);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+  }
+  
+  .rectangle {
+    width: 20vw;
+    height: 100vh;
+    background-color: hsl(22.89deg 58.79% 67.65%);
+    position: absolute;
+    right: 10%;
+  }
+  .example-button-row {
+    position: absolute;
+    right: 8%;
+    top: 7%;
+  }
+  
+  .mat-flat-button.custom-button {
+    background-color: hsl(13.47deg 29.7% 32.35%);
+    color: white; /* ניתן לשנות את הצבע של הטקסט לפי הצורך */
+  }
+  
+  .mat-flat-button.custom-button:hover {
+    background-color: hsl(13.47deg 29.7% 42.35%); /* גוון בהיר יותר עבור מצב ריחוף */
+  }
+  
