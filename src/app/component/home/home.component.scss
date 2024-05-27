@@ -5,7 +5,7 @@
   }
   
   .background {
-    background-color: hsl(13.47deg 29.7% 32.35%);
+    background-color:hsl(13.47deg 55.06% 82.55%);
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -14,7 +14,7 @@
   .rectangle {
     width: 20vw;
     height: 100vh;
-    background-color: hsl(22.89deg 58.79% 67.65%);
+    background-color: hsl(37.58deg 64.54% 27.65%);
     position: absolute;
     right: 10%;
   }
@@ -25,11 +25,11 @@
   }
   
   .mat-flat-button.custom-button {
-    background-color: hsl(13.47deg 29.7% 32.35%);
-    color: white; /* ניתן לשנות את הצבע של הטקסט לפי הצורך */
+    background-color:hsl(13.47deg 55.06% 82.55%);
+    color:hsl(37.58deg 64.54% 27.65%);; /* ניתן לשנות את הצבע של הטקסט לפי הצורך */
   }
   
   .mat-flat-button.custom-button:hover {
-    background-color: hsl(13.47deg 29.7% 42.35%); /* גוון בהיר יותר עבור מצב ריחוף */
+    background-color:hsl(13.47deg 55.06% 82.55%); /* גוון בהיר יותר עבור מצב ריחוף */
   }
-  
+ 

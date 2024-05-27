@@ -1,1 +1,23 @@
-<router-outlet></router-outlet>
+<nav class="navbar">
+    <div class="menu-icon">
+      <span class="menu-icon-bar"></span>
+      <span class="menu-icon-bar"></span>
+      <span class="menu-icon-bar"></span>
+    </div>
+    <div class="navbar-links">
+      <a routerLink="/">Home</a>
+     
+      @if(userService.token){ 
+        <a routerLink="allRecipes">All-Recipes</a>
+    }
+    </div>
+    <div class="navbar-search" *ngIf="isAllRecipesPage()">
+      <input type="text" placeholder="Search..." />
+      <button class="search-button">🔍</button>
+    </div>
+    <div class="navbar-login">
+      <button mat-flat-button routerLink="/login">Log In</button>
+    </div>
+  </nav>
+  
+  <router-outlet></router-outlet>

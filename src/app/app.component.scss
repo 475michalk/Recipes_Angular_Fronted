@@ -1,0 +1,110 @@
+// * {
+//   margin: 0;
+//   padding: 0;
+//   box-sizing: border-box;
+// }
+
+.background {
+  background-color: hsl(13.47deg 55.06% 82.55%);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+}
+
+.navbar {
+    width: 95%;
+   // background-color: hsl(13.47deg 29.7% 32.35%);
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0; /* קבע את המיקום של ה-Navbar בצד השמאלי */
+    z-index: 1000;
+    margin-right: auto; 
+  }
+  
+  .navbar-links {
+    margin-right: auto; /* יצרתי מרווח כדי לסגור את המרווח */
+}
+
+  .menu-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 24px;
+    cursor: pointer;
+  }
+  
+  .menu-icon-bar {
+    width: 35px;
+    height: 4px;
+    background-color:hsl(37.58deg 64.54% 27.65%);
+  }
+  
+  .navbar-links {
+    display: flex;
+    gap: 2rem;
+  }
+  
+  .navbar-links a {
+    color: hsl(17.75deg 49.65% 71.96%);
+    text-decoration: none;
+    font-size: 17px;
+    padding: 14px 20px;
+  }
+  
+  .navbar-links a:hover {
+    background-color: hsl(17.75deg 49.65% 71.96%);
+    color:hsl(37.58deg 64.54% 27.65%);
+    border-radius: 5px;
+  }
+  
+  .navbar-search {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-search input {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 20px 0 0 20px;
+    outline: none;
+  }
+  
+  .search-button {
+    padding: 0.5rem 1rem;
+    background-color:hsl(37.58deg 64.54% 27.65%);
+    border: none;
+    border-radius: 0 20px 20px 0;
+    cursor: pointer;
+  }
+  
+  .search-button:hover {
+    background-color:hsl(37.58deg 64.54% 27.65%);
+  }
+  
+  .navbar-login button {
+    background-color:hsl(17.75deg 49.65% 71.96%);
+    color: hsl(37.58deg 64.54% 27.65%);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  
+  .navbar-login button:hover {
+    background-color:hsl(17.75deg 49.65% 71.96%);
+  }
+  
+  /* Responsive adjustments */
+  @media screen and (max-width: 768px) {
+    .navbar-links {
+      display: none;
+    }
+  
+    .menu-icon {
+      display: flex;
+    }
+  }
