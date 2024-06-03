@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class RecipeServiceService {
 
-  private usersURL = `${environment.apiURL}/recipe`;
+  private usersURL = `${environment.apiURL}/recipe/allR`;
 
   constructor(private http: HttpClient) { }
 
