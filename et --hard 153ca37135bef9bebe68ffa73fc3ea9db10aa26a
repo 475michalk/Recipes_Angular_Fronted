@@ -1,0 +1,17 @@
+[33mcommit 153ca37135bef9bebe68ffa73fc3ea9db10aa26a[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: 475michal <166406013+475michalk@users.noreply.github.com>
+Date:   Tue Jun 4 01:23:05 2024 +0300
+
+    recipe-and-img
+
+[33mcommit a2c29365271c3f763f1a6042dca0d440c2794c28[m
+Author: 475michal <166406013+475michalk@users.noreply.github.com>
+Date:   Tue May 28 01:03:14 2024 +0300
+
+    do card from all recipes and get from server
+
+[33mcommit 99434e6a478472fd26cc40b2e1ef2002d90e1ceb[m
+Author: 475michal <166406013+475michalk@users.noreply.github.com>
+Date:   Tue May 21 19:02:47 2024 +0300
+
+    angular

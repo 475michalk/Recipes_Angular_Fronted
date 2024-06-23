@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  align-items: center;
+  text-align: center;
+}
+
+.parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: hsl(13.47deg 55.06% 82.55%);
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: hsl(13.47deg 55.06% 82.55%);
+}
+
+.center-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.rectangle {
+  width: 100%; /* נותן לריבוע להיות ברוחב מלא */
+  max-width: 700px; /* מגביל את הרוחב המקסימלי */
+  min-height: 600px; /* גובה מינימלי של הריבוע */
+  background-color: hsl(13.47deg 55.06% 82.55%);
+  border-radius: 20px; /* רדיוס פינות */
+  border: 2px solid hsl(37.58deg 64.54% 27.65%); /* צבע ורוחב המסגרת */
+  padding: 30px; /* מרווח פנימי */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  overflow: hidden; /* מונע גלילה פנימית */
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.btn {
+  width: 30%;
+  height: 45px;
+  border-radius: 25px;
+  font-size: 1em;
+  font-weight: bold;
+  color: hsl(13.47deg 55.06% 82.55%);
+  background-color: hsl(37.58deg 64.54% 27.65%);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+.btn:hover {
+  background-color: hsl(17.75deg 49.65% 71.96%);
+}
+
+.container span {
+  position: absolute;
+  left: 0;
+  width: 32px;
+  height: 6px;
+  background: hsl(13.47deg 55.06% 82.55%);
+  border-radius: 8px;
+  transform-origin: 128px;
+  transform: scale(2.2) rotate(calc(var(--i) * (360deg / 50)));
+  animation: animateBlink 3s linear infinite;
+  animation-delay: calc(var(--i) * (3s / 50));
+}
+
+@keyframes animateBlink {
+  0% {
+    background: hsl(17.75deg 49.65% 71.96%);
+  }
+  25% {
+    background: hsl(13.47deg 55.06% 82.55%);
+  }
+}
+
+.login-box {
+  position: absolute;
+  width: 400px;
+  background-color: hsl(13.47deg 55.06% 82.55%);
+  padding: 40px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  font-size: 2em;
+  color: hsl(37.58deg 64.54% 27.65%);
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.input-box {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.input-box input {
+  width: 100%;
+  height: 50px;
+  background: transparent;
+  border: 2px solid hsl(13.47deg 55.06% 82.55%);
+  outline: none;
+  border-radius: 40px;
+  font-size: 1em;
+  color: hsl(37.58deg 64.54% 27.65%);
+  padding: 0 20px;
+  transition: border-color 0.5s ease;
+}
+
+.input-box input:focus,
+.input-box input:valid {
+  border-color: hsl(17.75deg 49.65% 71.96%);
+}
+
+.input-box label {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  font-size: 1em;
+  color: hsl(37.58deg 64.54% 27.65%);
+  pointer-events: none;
+  transition: top 0.5s ease, font-size 0.5s ease, background-color 0.5s ease, padding 0.5s ease;
+}
+
+.input-box input:focus~label,
+.input-box input:valid~label {
+  top: 1px;
+  font-size: 0.8em;
+  background: hsl(13.47deg 55.06% 82.55%);
+  padding: 0 6px;
+}
+
+.forgot-pass a {
+  font-size: 0.85em;
+  color: hsl(37.58deg 64.54% 27.65%);
+  text-decoration: none;
+}
+
+.forgot-pass a:hover {
+  text-decoration: underline;
+}
+
+.btn {
+  width: 100%;
+  height: 45px;
+  background: hsl(37.58deg 64.54% 27.65%);
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  cursor: pointer;
+  font-size: 1em;
+  color: hsl(17.75deg 49.65% 71.96%);
+  font-weight: 600;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: hsl(17.75deg 49.65% 71.96%);
+  color: hsl(37.58deg 64.54% 27.65%);
+}
+
+.signup-link a {
+  font-size: 1em;
+  color: hsl(37.58deg 64.54% 27.65%);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.signup-link a:hover {
+  text-decoration: underline;
+}
+
+.recipe-form {
+  margin-top: 50px;
+}

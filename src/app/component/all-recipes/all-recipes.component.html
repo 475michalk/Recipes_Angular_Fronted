@@ -1,13 +1,11 @@
-<!-- all-recipes.component.html -->
 <div class="grid-container">
   <div *ngFor="let recipe of recipes" class="card">
     <div class="card-header">
       <h4 class="card-title">{{ recipe.nameRecipe }}</h4>
-      <p class="card-subtitle">{{ recipe.description }}</p>
+      <p class="card-subtitle">{{ recipe.descriptionRecipe }}</p>
+      <p class="card-subtitle">{{ recipe.layers.component }}</p>
     </div>
-    <!-- <img [src]="recipe.images[0]" alt="תמונה"> -->
-    <img *ngIf="recipe.images && recipe.images.length > 0" [src]="recipe.images[0]">
-
+    <app-slideshow *ngIf="recipe.image && recipe.image.length > 0" [previewImages]="getImageUrls(recipe)"></app-slideshow>
     <div class="card-content">
       <p>משך הכנה: {{ recipe.preparationTime }} דקות</p>
       <p>דרגת קושי: {{ recipe.level }}/5</p>

@@ -4,11 +4,12 @@ import { RecipeServiceService } from '../../shared/Service/Recipe/recipe-service
 import { CommonModule, NgIf } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { OneRecipesComponent } from '../one-recipes/one-recipes.component';
+import { SlideshowComponent } from '../slideshow/slideshow.component';
 
 @Component({
   selector: 'app-all-recipes',
   standalone: true,
-  imports: [MatTabsModule,CommonModule,RouterModule,OneRecipesComponent,NgIf],
+  imports: [MatTabsModule,CommonModule,RouterModule,OneRecipesComponent,NgIf,SlideshowComponent],
   templateUrl: './all-recipes.component.html',
   styleUrl: './all-recipes.component.scss'
 })
@@ -18,6 +19,8 @@ export class AllRecipesComponent implements OnInit{
   selectedRecipe: any = null;
 
   constructor(private recipeService: RecipeServiceService) { }
+
+  
 
   openRecipeModal(recipe: any) {
     this.selectedRecipe = recipe;
@@ -36,8 +39,9 @@ export class AllRecipesComponent implements OnInit{
       console.log(this.recipes);
       
     });
-
-
-   
+    
   }
+  getImageUrls(recipe: any): string[] {
+      return recipe.image.map((img: string) => 'http://localhost:5000/images/' + img);
+    }
 }

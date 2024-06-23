@@ -1,0 +1,48 @@
+<div class="center-box">
+  <div class="rectangle">
+    <form (ngSubmit)="onSubmit()" #recipeForm="ngForm" class="recipe-form">
+      <div class="form-group">
+        <label for="nameRecipe">Recipe Name</label><br>
+        <input type="text" class="form-control" id="nameRecipe" name="nameRecipe" [(ngModel)]="newRecipe.nameRecipe" required>
+      </div>
+      <div class="form-group">
+        <label for="descriptionRecipe">Recipe Description</label><br>
+        <textarea class="form-control" id="descriptionRecipe" name="descriptionRecipe" [(ngModel)]="newRecipe.descriptionRecipe"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="categoryName">Categories</label><br>
+        <select class="form-control" (change)="handleCategoryChange($event)">
+          <option *ngFor="let category of categories" [value]="category.name">{{ category.name }}</option>
+          <option value="new">קטגוריה חדשה</option>
+        </select>
+        <input *ngIf="newCategory" type="text" class="form-control" id="newCategoryName" name="newCategoryName" [(ngModel)]="categoryNameInput" placeholder="הכנס קטגוריה חדשה">
+      </div>
+      <ul class="category-list">
+        <li *ngFor="let category of newRecipe.categoryName">{{ category }}</li>
+      </ul>
+      <div class="form-group">
+        <label for="preparationTime">Preparation Time (minutes)</label><br>
+        <input type="number" class="form-control" id="preparationTime" name="preparationTime" [(ngModel)]="newRecipe.preparationTime">
+      </div>
+      <div class="form-group">
+        <label for="level">Difficulty Level</label><br>
+        <input type="number" class="form-control" id="level" name="level" [(ngModel)]="newRecipe.level">
+      </div>
+      <div class="form-group">
+        <label for="instructionRecipe">Preparation Instructions</label><br>
+        <textarea class="form-control" id="instructionRecipe" name="instructionRecipe" [(ngModel)]="newRecipe.instructionRecipe"></textarea>
+      </div>
+      <div class="form-group">
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="privateYesOrNo" name="privateYesOrNo" [(ngModel)]="newRecipe.privateYesOrNo">
+          <label class="form-check-label" for="privateYesOrNo">Private Recipe</label><br>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="images">Images</label><br>
+        <input type="file" class="form-control-file" id="images" name="images" (change)="onFileSelected($event)" multiple>
+      </div>
+      <button type="submit" class="btn btn-primary save-recipe-btn" [disabled]="!recipeForm.valid">Save Recipe</button>
+    </form>
+  </div>
+</div>

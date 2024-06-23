@@ -2,7 +2,7 @@
     <div class="container">
         <div class="register-box">
             <h2>Signup</h2>
-            <form (submit)="signUp(nameUser.value, email.value, password.value, address.value, role.value)">
+            <form (ngSubmit)="signUp(nameUser.value, email.value, password.value, address.value)">
                 <div class="input-box">
                     <input type="text" id="nameUser" #nameUser name="nameUser" required>
                     <label for="nameUser">Name</label>
@@ -19,15 +19,15 @@
                     <input type="text" id="address" #address name="address" required>
                     <label for="address">Address</label>
                 </div>
-                <div class="input-box">
+                <!-- <div class="input-box">
                     <select class="select" id="role" #role name="role" required>
                         <option value=""></option>
                         <option value="admin">Manager</option>
                         <option value="user">User</option>
                     </select>
                     <label for="role">Role</label>
-                </div>
-                <button type="submit" class="btn">SignUp</button>
+                </div> -->
+                <button type="button" class="btn" (click)="signUp(nameUser.value, email.value, password.value, address.value)">SignUp</button>
 
             </form>
         </div>

@@ -14,8 +14,13 @@
                 <div class="forgot-pass">
                     <a href="#">Forgot your password?</a>
                 </div>
-                <button type="button" class="btn" (click)="login(email.value, password.value)" >Login</button>
-                
+                <button type="button" class="btn" (click)="login(email.value, password.value)">Login</button>
+
+
+                <div *ngIf="errorMessage" class="error-message">
+                    {{ errorMessage }}
+                </div>
+
                 <div class="signup-link">
                     <a routerLink="/register">Signup</a>
                 </div>

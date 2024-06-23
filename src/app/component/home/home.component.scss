@@ -1,35 +1,56 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  .background {
-    background-color:hsl(13.47deg 55.06% 82.55%);
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-  }
-  
-  .rectangle {
-    width: 20vw;
-    height: 100vh;
-    background-color: hsl(37.58deg 64.54% 27.65%);
-    position: absolute;
-    right: 10%;
-  }
-  .example-button-row {
-    position: absolute;
-    right: 8%;
-    top: 7%;
-  }
-  
-  .mat-flat-button.custom-button {
-    background-color:hsl(13.47deg 55.06% 82.55%);
-    color:hsl(37.58deg 64.54% 27.65%);; /* ניתן לשנות את הצבע של הטקסט לפי הצורך */
-  }
-  
-  .mat-flat-button.custom-button:hover {
-    background-color:hsl(13.47deg 55.06% 82.55%); /* גוון בהיר יותר עבור מצב ריחוף */
-  }
- 
+.background {
+  background-color: hsl(13.47deg 55.06% 82.55%);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  position: relative;
+}
+
+.rectangle {
+  width: 20vw;
+  height: 100vh;
+  background-color: hsl(37.58deg 64.54% 27.65%);
+  position: absolute;
+  right: 10%;
+}
+
+.circle {
+  width: 809px;
+  height: 809px;
+  background-color: hsl(37.58deg 64.54% 27.65%);
+  border-radius: 50%;
+  position: absolute;
+  top: 55%;
+  left: 62%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+}
+
+.circle-image {
+  width: 809px;
+  height: 809px;
+  object-fit: cover; /* תתאים את התמונה כך שתכסה את כל שטח העיגול */
+}
+
+.example-button-row {
+  position: absolute;
+  right: 8%;
+  top: 7%;
+}
+
+.mat-flat-button.custom-button {
+  background-color: hsl(13.47deg 55.06% 82.55%);
+  color: hsl(37.58deg 64.54% 27.65%);
+}
+
+.mat-flat-button.custom-button:hover {
+  background-color: hsl(13.47deg 55.06% 82.55%);
+}
+
+.text_kitchen{
+  position: absolute;
+  top: 20%;
+  width: 30%;
+  height: 55%;
+  left: 6%;
+}

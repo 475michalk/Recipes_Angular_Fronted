@@ -1,0 +1,15 @@
+<div class="slideshow-container" *ngIf="previewImages.length > 0">
+  <div *ngFor="let image of previewImages; let i = index" class="mySlides fade" [ngClass]="{'active': i === currentIndex}">
+    <img [src]="image" style="width: 330px; height: 250px;">
+  </div>
+
+  <!-- Next and previous buttons -->
+  <a class="prev" (click)="plusSlides(-1)">&#10094;</a>
+  <a class="next" (click)="plusSlides(1)">&#10095;</a>
+</div>
+<br>
+
+<!-- The dots/circles -->
+<div style="text-align:center">
+  <span *ngFor="let image of previewImages; let i = index" class="dot" [ngClass]="{'active': i === currentIndex}" (click)="currentSlide(i)"></span>
+</div>

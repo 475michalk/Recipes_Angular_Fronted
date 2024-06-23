@@ -1,8 +1,9 @@
 <div *ngIf="recipe">
-    <h2>{{ recipe.nameRecipe }}</h2>
-    <p>{{ recipe.descriptionRecipe }}</p>
-    <img *ngIf="recipe.images && recipe.images.length > 0" [src]="'http://localhost:3000/' + recipe.images[0]" alt="תמונה">
-    <p>משך הכנה: {{ recipe.preparationTime }} דקות</p>
-    <p>דרגת קושי: {{ recipe.level }}/5</p>
-    <p>{{ recipe.instructionRecipe }}</p>
+  <h2 (click)="ccc()">{{ recipe.nameRecipe }}</h2>
+  <p>{{ recipe.descriptionRecipe }}</p>
+  {{ recipe.image && recipe.image.length }}
+  <app-slideshow *ngIf="recipe.image && recipe.image.length > 0" [previewImages]="getImageUrls()"></app-slideshow>
+  <p>משך הכנה: {{ recipe.preparationTime }} דקות</p>
+  <p>דרגת קושי: {{ recipe.level }}/5</p>
+  <p>{{ recipe.instructionRecipe }}</p>
 </div>

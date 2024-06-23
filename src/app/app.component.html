@@ -1,23 +1,27 @@
 <nav class="navbar">
-    <div class="menu-icon">
-      <span class="menu-icon-bar"></span>
-      <span class="menu-icon-bar"></span>
-      <span class="menu-icon-bar"></span>
-    </div>
-    <div class="navbar-links">
-      <a routerLink="/">Home</a>
-     
-      @if(userService.token){ 
-        <a routerLink="allRecipes">All-Recipes</a>
-    }
-    </div>
-    <div class="navbar-search" *ngIf="isAllRecipesPage()">
-      <input type="text" placeholder="Search..." />
-      <button class="search-button">🔍</button>
-    </div>
-    <div class="navbar-login">
-      <button mat-flat-button routerLink="/login">Log In</button>
-    </div>
-  </nav>
-  
-  <router-outlet></router-outlet>
+  <div class="menu-icon">
+    <span class="menu-icon-bar"></span>
+    <span class="menu-icon-bar"></span>
+    <span class="menu-icon-bar"></span>
+  </div>
+  <div class="navbar-links">
+    <a routerLink="/">Home</a>
+    <a routerLink="allRecipes">All-Recipes</a>
+
+    <a *ngIf="userService.token" routerLink="myRecipe">my-Recipes</a>
+    <a *ngIf="userService.token" routerLink="addRecipe">Add-Recipe</a>
+
+
+  </div>
+
+  <div class="navbar-search" *ngIf="isAllRecipesPage()">
+    <input type="text" placeholder="Search..." />
+    <button class="search-button">🔍</button>
+  </div>
+  <div class="navbar-login">
+    <button mat-flat-button *ngIf="!userService.token" routerLink="/login">{{ getButtonText() }}</button>
+    <button mat-flat-button *ngIf="userService.token" (click)="logout()">{{ getButtonText() }}</button>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
