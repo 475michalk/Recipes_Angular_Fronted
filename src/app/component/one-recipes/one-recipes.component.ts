@@ -4,7 +4,7 @@ import { SlideshowComponent } from '../slideshow/slideshow.component';
 import { RecipeServiceService } from '../../shared/Service/Recipe/recipe-service.service';
 import { UserServiceService } from '../../shared/Service/Users/user-service.service';
 import { TimePipe } from '../../shared/pipe/time.pipe';
-import { StarsDirective } from '../../shared/directive/stars.directive';
+import { StarsDirective } from '../../directive/stars.directive';
 
 @Component({
   selector: 'app-one-recipes',

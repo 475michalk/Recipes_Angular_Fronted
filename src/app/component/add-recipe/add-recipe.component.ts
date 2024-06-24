@@ -21,6 +21,7 @@ export class AddRecipeComponent {
   categoryNameInput: string = '';
   files: FileList | undefined;
   ingredientInput: string = '';
+  showNewCategoryInput: boolean = false;
 
   constructor(
     private recipeService: RecipeServiceService,
@@ -57,23 +58,27 @@ export class AddRecipeComponent {
     this.newRecipe.layers.push({ description: '', component: [] });
   }
 
-  addSelectedCategories(): void {
-    if (this.categoryNameInput === 'new' && this.newCategoryName.trim() !== '') {
+    addNewCategory(): void {
+    this.showNewCategoryInput = true; // Show the input field for new category
+  }
+
+  confirmNewCategory(): void {
+    if (this.newCategoryName.trim() !== '') {
       this.categoryService.addCategory(this.newCategoryName.trim()).subscribe(
         (newCategory) => {
+          this.selectedCategories.push(newCategory.name);
           this.newRecipe.categoryName.push(newCategory.name);
+          this.newCategoryName = ''; // Clear newCategoryName after adding new category
+          this.showNewCategoryInput = false; // Hide the input field after confirmation
         },
         (error) => {
           console.error('Error adding category:', error);
         }
       );
-    } else {
-      this.newRecipe.categoryName.push(...this.selectedCategories);
     }
   }
 
   onSubmit(): void {
-    this.addSelectedCategories();
     this.saveRecipe();
   }
 
@@ -96,10 +101,13 @@ export class AddRecipeComponent {
 
   handleCategoryChange(event: any): void {
     const selectedCategory = event.target.value;
-    if (selectedCategory === 'new') {
-      this.categoryNameInput = 'new';
-    } else {
+    this.categoryNameInput = selectedCategory;
+    if (!this.selectedCategories.includes(selectedCategory)) {
       this.selectedCategories.push(selectedCategory);
     }
+    if (!this.newRecipe.categoryName.includes(selectedCategory)) {
+      this.newRecipe.categoryName.push(selectedCategory);
+    }
   }
+
 }

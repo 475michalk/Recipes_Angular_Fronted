@@ -3,7 +3,7 @@
       <div class="card-header">
         <h4 class="card-title">{{ recipe.nameRecipe }}</h4>
         <p class="card-subtitle">{{ recipe.descriptionRecipe }}</p>
-        <p class="card-subtitle">{{ recipe.categoryName.join(', ') }}</p>
+        <!-- <p class="card-subtitle">{{ recipe.categoryName.join(', ') }}</p> -->
       </div>
       <app-slideshow *ngIf="recipe.image && recipe.image.length > 0" [previewImages]="getImageUrls(recipe)"></app-slideshow>
       <div class="card-content">

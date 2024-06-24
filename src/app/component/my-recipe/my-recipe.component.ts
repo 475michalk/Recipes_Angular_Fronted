@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RecipeServiceService } from '../../shared/Service/Recipe/recipe-service.service';
 import { Recipe } from '../../shared/models/recipes';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { SlideshowComponent } from '../slideshow/slideshow.component';
 import { OneRecipesComponent } from '../one-recipes/one-recipes.component';
-import { StarsDirective } from '../../shared/directive/stars.directive';
 import { TimePipe } from '../../shared/pipe/time.pipe';
+import { StarsDirective } from '../../directive/stars.directive';
 
 @Component({
   selector: 'app-my-recipe',
@@ -15,7 +15,7 @@ import { TimePipe } from '../../shared/pipe/time.pipe';
   templateUrl: './my-recipe.component.html',
   styleUrl: './my-recipe.component.scss'
 })
-export class MyRecipeComponent {
+export class MyRecipeComponent implements OnInit {
   recipes: Recipe[] = [];
   showModal: boolean = false;
   selectedRecipe: Recipe | null = null;

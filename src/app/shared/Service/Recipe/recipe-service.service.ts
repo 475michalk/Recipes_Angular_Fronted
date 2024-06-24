@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { environment } from '../../../../environments/environment';
 import { Observable, catchError } from 'rxjs';
@@ -23,8 +23,12 @@ export class RecipeServiceService {
     return this.http.get<any>(`${this.apiUrl}/nextImage`);
   }
   // פונקציה לקבלת רשימת כל המתכונים
-  getRecipes(): Observable<Recipe[]> {
-    return this.http.get<Recipe[]>(this.apiUrlGetAll);
+  getRecipes(page: number, pageSize: number): Observable<Recipe[]> {
+    const params = new HttpParams()
+      .set('page', page.toString())
+      .set('pageSize', pageSize.toString());
+
+    return this.http.get<Recipe[]>(this.apiUrlGetAll, { params });
   }
 
   getMyRecipes(userId: string): Observable<Recipe[]> {

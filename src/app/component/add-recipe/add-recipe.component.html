@@ -11,16 +11,18 @@
       </div>
       <div class="form-group">
         <label for="categoryName">Categories</label><br>
-        <select multiple class="form-control" [(ngModel)]="selectedCategories" name="categories">
+        <select class="form-control" (change)="handleCategoryChange($event)">
           <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
-          <option value="new">Add New Category</option>
         </select>
-        <input *ngIf="selectedCategories.includes('new')" type="text" class="form-control" id="newCategoryName" name="newCategoryName" [(ngModel)]="newCategoryName" placeholder="Enter new category">
-        <button type="button" class="btn btn-primary" (click)="addSelectedCategories()">Add Selected Categories</button>
+        <button type="button" class="btn btn-secondary ml-2" (click)="addNewCategory()">Add New Category</button>
+        <input *ngIf="showNewCategoryInput" type="text" class="form-control ml-2" id="newCategoryName" name="newCategoryName" [(ngModel)]="newCategoryName" placeholder="Enter new category">
+        <button type="button" class="btn btn-primary ml-2" (click)="confirmNewCategory()" *ngIf="showNewCategoryInput && newCategoryName.trim() !== ''">OK</button>
       </div>
       <ul class="category-list">
         <li *ngFor="let category of newRecipe.categoryName">{{ category }}</li>
       </ul>
+      
+      
       <div class="form-group">
         <label for="preparationTime">Preparation Time (minutes)</label><br>
         <input type="number" class="form-control" id="preparationTime" name="preparationTime" [(ngModel)]="newRecipe.preparationTime">
@@ -29,6 +31,7 @@
         <label for="level">Difficulty Level</label><br>
         <input type="number" class="form-control" id="level" name="level" [(ngModel)]="newRecipe.level">
       </div>
+      <!-- Layers Section -->
       <div class="form-group">
         <label>Layers</label><br>
         <div *ngFor="let layer of newRecipe.layers; let i = index" class="layer-container">
@@ -43,10 +46,11 @@
               <li *ngFor="let ingredient of layer.component">{{ ingredient }}</li>
             </ul>
           </div>
-          <hr>
+          <hr> <!-- Separator between layers -->
         </div>
         <button type="button" class="btn btn-primary" (click)="addLayer()">Add Layer</button>
       </div>
+      <!-- Instructions Section -->
       <div class="form-group">
         <label for="instructionRecipe">Preparation Instructions</label><br>
         <textarea class="form-control" id="instructionRecipe" name="instructionRecipe" [(ngModel)]="newRecipe.instructionRecipe" placeholder="Enter preparation instructions"></textarea>

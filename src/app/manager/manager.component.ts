@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { UserServiceService } from '../../shared/Service/Users/user-service.service';
 import { RouterModule } from '@angular/router';
 import { NgFor } from '@angular/common';
+import { UserServiceService } from '../shared/Service/Users/user-service.service';
 
 @Component({
   selector: 'app-manager',

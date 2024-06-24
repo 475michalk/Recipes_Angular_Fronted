@@ -1,7 +1,7 @@
 /* Updated style for dividing grids into 3 cards in a row */
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Each card will be 280 pixels wide or more, and the size will fit the length of the row */
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); /* Each card will be 280 pixels wide or more, and the size will fit the length of the row */
   gap: 20px; 
   position: relative;
   top: 80px;
