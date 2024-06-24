@@ -6,6 +6,7 @@ import { AllRecipesComponent } from './component/all-recipes/all-recipes.compone
 import { OneRecipesComponent } from './component/one-recipes/one-recipes.component';
 import { AddRecipeComponent } from './component/add-recipe/add-recipe.component';
 import { MyRecipeComponent } from './component/my-recipe/my-recipe.component';
+import { ManagerComponent } from './component/manager/manager.component';
 
 export const routes: Routes = [{
     // path:' ',component:HomeComponent
@@ -25,6 +26,8 @@ export const routes: Routes = [{
 
 { path: 'myRecipe', component: MyRecipeComponent },
 
-{ path: 'recipe/:id', component: OneRecipesComponent }
+{ path: 'recipe/:id', component: OneRecipesComponent },
+
+{ path: 'customers', component: ManagerComponent } 
 
 ];

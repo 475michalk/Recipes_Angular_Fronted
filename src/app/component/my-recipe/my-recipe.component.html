@@ -7,12 +7,18 @@
       </div>
       <app-slideshow *ngIf="recipe.image && recipe.image.length > 0" [previewImages]="getImageUrls(recipe)"></app-slideshow>
       <div class="card-content">
-        <p>משך הכנה: {{ recipe.preparationTime }} דקות</p>
-        <p>דרגת קושי: {{ recipe.level }}/5</p>
-      </div>
+        <p>משך הכנה: {{ recipe.preparationTime | time }}</p>
+        <!-- <div  class="card"> -->
+          <!-- Other card content -->
+          <p style="direction:rtl ;">דרגת קושי:
+            <span *appStars="recipe.level">★</span> 
+          </p>
+          <!-- Other card content -->
+        <!-- </div> -->
+        
+            </div>
       <div class="card-actions">
         <button class="card-button" (click)="openRecipeModal(recipe)">הצגת מתכון</button>
-        <button class="card-button" (click)="editRecipe(recipe)">עריכת מתכון</button>
       </div>
     </div>
   </div>

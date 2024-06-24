@@ -9,21 +9,22 @@ import { CategoryServiceService } from '../../shared/Service/Category/category-s
 @Component({
   selector: 'app-add-recipe',
   standalone: true,
-  imports: [RouterModule, FormsModule, NgFor,NgIf],
+  imports: [RouterModule, FormsModule, NgFor, NgIf],
   templateUrl: './add-recipe.component.html',
-  styleUrl: './add-recipe.component.scss',
+  styleUrls: ['./add-recipe.component.scss'],
 })
 export class AddRecipeComponent {
   newRecipe: Recipe = new Recipe();
+  categories: string[] = [];
+  selectedCategories: string[] = [];
+  newCategoryName: string = '';
   categoryNameInput: string = '';
   files: FileList | undefined;
-  categories: any[] = []; // List of existing categories
-  newCategory: boolean = false; // To track if user selects "new category"
-  selectedCategory: string = ''; // Track selected category
+  ingredientInput: string = '';
 
   constructor(
     private recipeService: RecipeServiceService,
-    private categoryService: CategoryServiceService // Assuming you have a category service
+    private categoryService: CategoryServiceService
   ) {}
 
   ngOnInit(): void {
@@ -33,38 +34,55 @@ export class AddRecipeComponent {
   loadCategories(): void {
     this.categoryService.getCategories().subscribe(
       (data: any[]) => {
-        this.categories = data;
+        this.categories = data.map(category => category.name); // Assuming data contains objects with a name property
       },
       (error) => {
         console.error('Error loading categories:', error);
       }
     );
   }
-  onSubmit(): void {
-    if (this.newCategory && this.categoryNameInput.trim() !== '') {
-      this.categoryService.addCategory(this.categoryNameInput.trim()).subscribe(
+
+  addIngredient(layerIndex: number, event: any): void {
+    event.preventDefault(); // Prevent form submission
+    if (this.ingredientInput.trim() !== '') {
+      if (!this.newRecipe.layers[layerIndex]) {
+        this.newRecipe.layers[layerIndex] = { description: '', component: [] };
+      }
+      this.newRecipe.layers[layerIndex].component.push(this.ingredientInput.trim());
+      this.ingredientInput = ''; // Clear input field after adding ingredient
+    }
+  }
+
+  addLayer(): void {
+    this.newRecipe.layers.push({ description: '', component: [] });
+  }
+
+  addSelectedCategories(): void {
+    if (this.categoryNameInput === 'new' && this.newCategoryName.trim() !== '') {
+      this.categoryService.addCategory(this.newCategoryName.trim()).subscribe(
         (newCategory) => {
           this.newRecipe.categoryName.push(newCategory.name);
-          this.saveRecipe();
         },
         (error) => {
           console.error('Error adding category:', error);
         }
       );
-    } else if (this.selectedCategory !== '' && !this.newCategory) {
-      if (!this.newRecipe.categoryName.includes(this.selectedCategory)) {
-        this.newRecipe.categoryName.push(this.selectedCategory);
-      }
-      this.saveRecipe();
+    } else {
+      this.newRecipe.categoryName.push(...this.selectedCategories);
     }
+  }
+
+  onSubmit(): void {
+    this.addSelectedCategories();
+    this.saveRecipe();
   }
 
   saveRecipe(): void {
     this.recipeService.addRecipe(this.newRecipe, this.files).subscribe(
       () => {
         console.log('Recipe added successfully!');
-        this.newRecipe = new Recipe();
         this.categoryNameInput = '';
+        this.newCategoryName = ''; // Clear new category input after submission
       },
       (error) => {
         console.error('Error adding recipe:', error);
@@ -77,13 +95,11 @@ export class AddRecipeComponent {
   }
 
   handleCategoryChange(event: any): void {
-    this.selectedCategory = event.target.value;
-    if (this.selectedCategory === 'new') {
-      this.newCategory = true;
-      this.categoryNameInput = '';
+    const selectedCategory = event.target.value;
+    if (selectedCategory === 'new') {
+      this.categoryNameInput = 'new';
     } else {
-      this.newCategory = false;
-      this.categoryNameInput = this.selectedCategory;
+      this.selectedCategories.push(selectedCategory);
     }
   }
 }

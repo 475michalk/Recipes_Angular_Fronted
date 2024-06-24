@@ -7,18 +7,14 @@
   <div class="navbar-links">
     <a routerLink="/">Home</a>
     <a routerLink="allRecipes">All-Recipes</a>
-
-    <a *ngIf="userService.token" routerLink="myRecipe">my-Recipes</a>
+    <a *ngIf="userService.token" routerLink="myRecipe">My-Recipes</a>
     <a *ngIf="userService.token" routerLink="addRecipe">Add-Recipe</a>
-
-
+    <a *ngIf="isManager" routerLink="customers">Customers</a> <!-- Show Customers link only if user is a Manager -->
   </div>
-
-  <div class="navbar-search" *ngIf="isAllRecipesPage()">
-    <input type="text" placeholder="Search..." />
-    <button class="search-button">🔍</button>
-  </div>
+  
   <div class="navbar-login">
+    <span *ngIf="!userService.token">שלום אורח</span>
+    <span *ngIf="userService.token"> {{ userName }} :שלום</span>
     <button mat-flat-button *ngIf="!userService.token" routerLink="/login">{{ getButtonText() }}</button>
     <button mat-flat-button *ngIf="userService.token" (click)="logout()">{{ getButtonText() }}</button>
   </div>

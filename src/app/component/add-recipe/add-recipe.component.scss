@@ -7,6 +7,8 @@
   font-family: 'Poppins', sans-serif;
   align-items: center;
   text-align: center;
+  direction: rtl;
+
 }
 
 .parent {
@@ -158,7 +160,7 @@ h2 {
 }
 
 .btn {
-  width: 100%;
+  width: 60%;
   height: 45px;
   background: hsl(37.58deg 64.54% 27.65%);
   border: none;
@@ -190,3 +192,62 @@ h2 {
 .recipe-form {
   margin-top: 50px;
 }
+
+// .input-box input,
+// .input-box select {
+//   width: 100%;
+//   height: 50px;
+//   background: transparent;
+//   border: 2px solid hsl(13.47deg 55.06% 82.55%);
+//   outline: none;
+//   border-radius: 25px; /* עיגוליות בקצוות השדה */
+//   font-size: 1em;
+//   color: hsl(37.58deg 64.54% 27.65%);
+//   padding: 0 20px;
+//   transition: border-color 0.5s ease;
+// }
+
+
+
+.input-box label {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  font-size: 1em;
+  color: hsl(37.58deg 64.54% 27.65%);
+  pointer-events: none;
+  transition: top 0.5s ease, font-size 0.5s ease, background-color 0.5s ease, padding 0.5s ease;
+}
+
+.input-box input:focus~label,
+.input-box input:valid~label,
+.input-box select:focus~label {
+  top: 1px;
+  font-size: 0.8em;
+  background: hsl(13.47deg 55.06% 82.55%);
+  padding: 0 6px;
+}
+
+
+
+.input-box textarea:focus {
+  border-color: hsl(17.75deg 49.65% 71.96%);
+}
+.form-group select ,
+.form-group textarea,
+.form-group input[type="text"],
+.form-group input[type="number"] {
+  width: 50%;
+  background: transparent;
+  border: 2px solid hsl(37.58deg 64.54% 27.65%);
+  outline: none;
+  border-radius: 25px;
+  font-size: 1em;
+  color: hsl(37.58deg 64.54% 27.65%);
+  padding: 10px 20px;
+  transition: border-color 0.5s ease;
+}
+
+
+

@@ -9,13 +9,14 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class UserServiceService {
 
+
   private http = inject(HttpClient);
   private usersURL = `${environment.apiURL}/user`;
 
   private _token = new BehaviorSubject<string | null>(this.getTokenFromLocalStorage());
   public token$ = this._token.asObservable();
 
-  currentUser?: Users;
+  currentUser?: Users; // Ensure currentUser is of type Users | undefined
 
   private getTokenFromLocalStorage(): string | null {
     return localStorage.getItem('mytoken');
@@ -50,5 +51,9 @@ export class UserServiceService {
 
   logout(): void {
     this.token = null;
+  }
+
+  getAllUserNames(): Observable<string[]> {
+    return this.http.get<string[]>(`${this.usersURL}/getName`);
   }
 }

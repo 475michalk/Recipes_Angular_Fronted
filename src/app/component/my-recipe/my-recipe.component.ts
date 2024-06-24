@@ -1,15 +1,17 @@
 import { Component } from '@angular/core';
 import { RecipeServiceService } from '../../shared/Service/Recipe/recipe-service.service';
 import { Recipe } from '../../shared/models/recipes';
-import { CommonModule, NgIf } from '@angular/common';
+import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { SlideshowComponent } from '../slideshow/slideshow.component';
 import { OneRecipesComponent } from '../one-recipes/one-recipes.component';
+import { StarsDirective } from '../../shared/directive/stars.directive';
+import { TimePipe } from '../../shared/pipe/time.pipe';
 
 @Component({
   selector: 'app-my-recipe',
   standalone: true,
-  imports: [CommonModule,RouterModule,OneRecipesComponent,NgIf,SlideshowComponent],
+  imports: [CommonModule, RouterModule, OneRecipesComponent, NgIf, SlideshowComponent, StarsDirective, TimePipe, NgFor],
   templateUrl: './my-recipe.component.html',
   styleUrl: './my-recipe.component.scss'
 })

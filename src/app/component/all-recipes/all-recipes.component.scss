@@ -1,8 +1,7 @@
-/* Updated style for dividing grids into 3 cards in a row */
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Each card will be 280 pixels wide or more, and the size will fit the length of the row */
-  gap: 20px; 
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
   position: relative;
   top: 80px;
   text-align: center;
@@ -13,11 +12,9 @@
   border-radius: 5px;
   overflow: hidden;
   box-shadow: 0 4px 8px hsl(37.58deg 64.54% 27.65%);
-  width: 100%; /* Ensure each card takes up the full width of the grid cell */
+  width: 100%;
 }
 
-
-/* Existing style of the cards */
 .card-header {
   background-color: hsl(13.47deg 55.06% 82.55%);
   padding: 10px;
@@ -27,23 +24,12 @@
   margin: 0;
 }
 
-.card-subtitle {
-  margin: 5px 0 0;
-  color: hsl(17.75deg 49.65% 71.96%);
-}
-
-.card-image {
-  width: 100%;
-  height: auto;
-}
-
 .card-content {
   padding: 10px;
 }
 
 .card-actions {
   padding: 10px;
-  text-align: center;
 }
 
 .card-button {
@@ -78,7 +64,6 @@
   width: 30%;
   height: 80%;
   background: transparent;
-  align-items: center;
 }
 
 .modal-content {
@@ -93,8 +78,8 @@
   width: 50%;
   text-align: center;
   font-weight: bold;
-  max-height: 80vh; /* Add a max height to the modal content */
-  overflow-y: auto; /* Enable vertical scrolling if content exceeds max height */
+  max-height: 80vh;
+  overflow-y: auto;
 }
 
 .close-button {
@@ -107,7 +92,77 @@
   cursor: pointer;
 }
 
-.img {
-  width: 200px;
-  height: 200px;
+.pagination-container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  padding: 0 20px;
+}
+
+.pagination-controls {
+  display: flex;
+  align-items: center;
+}
+
+.pagination-controls .prev,
+.pagination-controls .next,
+.page-size-selector select {
+  cursor: pointer;
+  padding: 10px 20px;
+  color: hsl(37.58deg 64.54% 27.65%);
+  font-weight: bold;
+  font-size: 16px;
+  background-color: hsl(13.47deg 55.06% 82.55%);
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.pagination-controls .prev:hover,
+.pagination-controls .next:hover,
+.page-size-selector select:hover {
+  background-color: hsl(17.75deg 49.65% 71.96%);
+}
+
+.page-size-selector label {
+  color: hsl(17.75deg 49.65% 71.96%);
+  margin-right: 10px;
+}
+
+.navbar-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 20px;
+  background-color:  hsl(13.47deg 55.06% 82.55%);
+}
+
+.navbar-search input[type="text"],
+.navbar-search select,
+.navbar-search input[type="number"] {
+  padding: 10px;
+  border: 1px solid hsl(37.58deg 64.54% 27.65%);
+  border-radius: 5px;
+  font-size: 16px;
+  background-color:  hsl(13.47deg 55.06% 82.55%);
+}
+
+.navbar-search input[type="text"]::placeholder,
+.navbar-search input[type="number"]::placeholder {
+  color: hsl(37.58deg 64.54% 27.65%);
+}
+
+.navbar-search .search-button {
+  background-color: hsl(13.47deg 55.06% 82.55%);
+  color: hsl(37.58deg 64.54% 27.65%);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.navbar-search .search-button:hover {
+  background-color: hsl(17.75deg 49.65% 71.96%);
 }

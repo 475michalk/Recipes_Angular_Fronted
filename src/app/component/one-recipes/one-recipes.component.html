@@ -1,9 +1,42 @@
 <div *ngIf="recipe">
-  <h2 (click)="ccc()">{{ recipe.nameRecipe }}</h2>
+  <h2>{{ recipe.nameRecipe }}</h2>
   <p>{{ recipe.descriptionRecipe }}</p>
-  {{ recipe.image && recipe.image.length }}
-  <app-slideshow *ngIf="recipe.image && recipe.image.length > 0" [previewImages]="getImageUrls()"></app-slideshow>
-  <p>משך הכנה: {{ recipe.preparationTime }} דקות</p>
-  <p>דרגת קושי: {{ recipe.level }}/5</p>
-  <p>{{ recipe.instructionRecipe }}</p>
+  <div *ngIf="recipe.image && recipe.image.length > 0">
+    <app-slideshow [previewImages]="getImageUrls()"></app-slideshow>
+  </div>
+  <p>קטגוריה: <span *ngFor="let category of recipe.categoryName; let i = index">{{ category }}<span *ngIf="i < recipe.categoryName.length - 1">, </span></span></p>
+  <p>משך הכנה: {{ recipe.preparationTime | time }}</p>
+  <p style="direction:rtl ;">דרגת קושי:
+    <span *appStars="recipe.level">★</span> 
+  </p>
+  <div *ngIf="recipe.layers && recipe.layers.length">
+    <h3>שכבות:</h3>
+    <div *ngFor="let layer of recipe.layers; let i = index">
+      <h4>שכבה {{ i + 1 }}: {{ layer.description }}</h4>
+      <ul>
+        <li *ngFor="let ingredient of layer.component">{{ ingredient }}</li>
+      </ul>
+    </div>
+  </div>
+
+  <div *ngIf="recipe.instructionRecipe">
+    <h3>אופן ההכנה:</h3>
+    <ol>
+      <li *ngFor="let instruction of recipe.instructionRecipe.split('\n')">{{ instruction }}</li>
+    </ol>
+  </div>
+
+  <div *ngIf="isOwner" class="delete-button-container">
+    <button (click)="openDeleteModal()">Delete Recipe</button>
+  </div>
+
+  <!-- Modal for delete confirmation -->
+  <div *ngIf="showDeleteModal" class="modal">
+    <div class="modal-content">
+      <span class="close" (click)="closeDeleteModal()">&times;</span>
+      <p>Are you sure you want to delete this recipe?</p>
+      <button (click)="deleteRecipe()">Yes</button>
+      <button (click)="closeDeleteModal()">No</button>
+    </div>
+  </div>
 </div>

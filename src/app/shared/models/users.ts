@@ -1,7 +1,8 @@
 export interface Users {
-     nameUser?: String;
-     email?: String;
-     password?: String;
-     address?: String;
-     //role?:String;
-}
+     id?: string;
+     nameUser?: string;
+     email?: string;
+     password?: string;
+     address?: string;
+   }
+   

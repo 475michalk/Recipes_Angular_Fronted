@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -16,7 +16,11 @@ export class CategoryServiceService {
   }
 
   addCategory(categoryName: string): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}`, { name: categoryName });
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json' // הוסף headers כדי לציין שהתוכן של בקשת ה-POST הוא JSON
+    });
+    
+    return this.http.post<any>(`${this.apiUrl}`, { name: categoryName }, { headers: headers });
   }
 }
 

@@ -1,7 +1,7 @@
 export interface Recipes {
   nameRecipe?: string;
   descriptionRecipe?: string;
-  categoryName: string[];
+  categoryName?: string[];
   preparationTime?: number;
   level?: number;
   dateAdd?: Date;

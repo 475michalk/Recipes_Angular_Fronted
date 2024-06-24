@@ -11,11 +11,12 @@
       </div>
       <div class="form-group">
         <label for="categoryName">Categories</label><br>
-        <select class="form-control" (change)="handleCategoryChange($event)">
-          <option *ngFor="let category of categories" [value]="category.name">{{ category.name }}</option>
-          <option value="new">קטגוריה חדשה</option>
+        <select multiple class="form-control" [(ngModel)]="selectedCategories" name="categories">
+          <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+          <option value="new">Add New Category</option>
         </select>
-        <input *ngIf="newCategory" type="text" class="form-control" id="newCategoryName" name="newCategoryName" [(ngModel)]="categoryNameInput" placeholder="הכנס קטגוריה חדשה">
+        <input *ngIf="selectedCategories.includes('new')" type="text" class="form-control" id="newCategoryName" name="newCategoryName" [(ngModel)]="newCategoryName" placeholder="Enter new category">
+        <button type="button" class="btn btn-primary" (click)="addSelectedCategories()">Add Selected Categories</button>
       </div>
       <ul class="category-list">
         <li *ngFor="let category of newRecipe.categoryName">{{ category }}</li>
@@ -29,8 +30,26 @@
         <input type="number" class="form-control" id="level" name="level" [(ngModel)]="newRecipe.level">
       </div>
       <div class="form-group">
+        <label>Layers</label><br>
+        <div *ngFor="let layer of newRecipe.layers; let i = index" class="layer-container">
+          <div class="form-group">
+            <label for="layerDescription{{ i }}">Layer {{ i + 1 }}: Description</label><br>
+            <textarea class="form-control" id="layerDescription{{ i }}" name="layerDescription{{ i }}" [(ngModel)]="layer.description" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="layerIngredients{{ i }}">Layer {{ i + 1 }}: Ingredients</label><br>
+            <input type="text" class="form-control" id="layerIngredients{{ i }}" name="layerIngredients{{ i }}" [(ngModel)]="ingredientInput" (keydown.enter)="addIngredient(i, $event)" placeholder="Add ingredient and press Enter">
+            <ul class="ingredient-list">
+              <li *ngFor="let ingredient of layer.component">{{ ingredient }}</li>
+            </ul>
+          </div>
+          <hr>
+        </div>
+        <button type="button" class="btn btn-primary" (click)="addLayer()">Add Layer</button>
+      </div>
+      <div class="form-group">
         <label for="instructionRecipe">Preparation Instructions</label><br>
-        <textarea class="form-control" id="instructionRecipe" name="instructionRecipe" [(ngModel)]="newRecipe.instructionRecipe"></textarea>
+        <textarea class="form-control" id="instructionRecipe" name="instructionRecipe" [(ngModel)]="newRecipe.instructionRecipe" placeholder="Enter preparation instructions"></textarea>
       </div>
       <div class="form-group">
         <div class="form-check">

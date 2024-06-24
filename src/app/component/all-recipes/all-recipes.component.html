@@ -1,14 +1,40 @@
 <div class="grid-container">
-  <div *ngFor="let recipe of recipes" class="card">
+  <div class="pagination-container">
+    <div class="navbar-search">
+      <input type="text" placeholder="חפש לפי שם..." (input)="onNameFilterChange($event)" />
+      <select (change)="onCategoryFilterChange($event)">
+        <option value="">בחר קטגוריה...</option>
+        <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+      </select>
+      <input type="number" placeholder="זמן הכנה מקסימלי..." (input)="onPreparationTimeFilterChange($event)" />
+      <button class="search-button"></button>
+    </div>
+    <div class="pagination-controls">
+      <button class="prev" (click)="loadNextPage()">&#60;</button>
+      <button class="next" (click)="loadPreviousPage()">&#62;</button>
+    </div>
+    <div class="page-size-selector">
+      <label for="pageSizeSelect"></label>
+      <select id="pageSizeSelect" (change)="changePageSize($event)">
+        <option [value]="5" [selected]="pageSize === 5">5 פריטים</option>
+        <option [value]="10" [selected]="pageSize === 10">10 פריטים</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<div class="grid-container">
+  <div *ngFor="let recipe of filteredRecipes" class="card">
     <div class="card-header">
       <h4 class="card-title">{{ recipe.nameRecipe }}</h4>
-      <p class="card-subtitle">{{ recipe.descriptionRecipe }}</p>
-      <p class="card-subtitle">{{ recipe.layers.component }}</p>
     </div>
-    <app-slideshow *ngIf="recipe.image && recipe.image.length > 0" [previewImages]="getImageUrls(recipe)"></app-slideshow>
+    <app-slideshow *ngIf="recipe.image && recipe.image.length > 0"
+      [previewImages]="getImageUrls(recipe)"></app-slideshow>
     <div class="card-content">
-      <p>משך הכנה: {{ recipe.preparationTime }} דקות</p>
-      <p>דרגת קושי: {{ recipe.level }}/5</p>
+      <p>זמן הכנה: {{ recipe.preparationTime | time }}</p>
+      <p style="direction:rtl ;">דרגת קושי:
+        <span *appStars="recipe.level">★</span>
+      </p>
     </div>
     <div class="card-actions">
       <button class="card-button" (click)="openRecipeModal(recipe)">הצגת מתכון</button>
