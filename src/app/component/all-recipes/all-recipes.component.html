@@ -31,9 +31,9 @@
     <app-slideshow *ngIf="recipe.image && recipe.image.length > 0"
       [previewImages]="getImageUrls(recipe)"></app-slideshow>
     <div class="card-content">
-      <p>זמן הכנה: {{ recipe.preparationTime | time }}</p>
+      <p>זמן הכנה: {{ recipe.preparationTime ? (recipe.preparationTime | time) : 'לא צוין זמן הכנה' }}</p>
       <p style="direction:rtl ;">דרגת קושי:
-        <span *appStars="recipe.level">★</span>
+        <span *appStars="recipe.level ? recipe.level : 0">★</span>
       </p>
     </div>
     <div class="card-actions">

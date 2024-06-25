@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { LoginComponent } from './component/login/login.component';
 import { UserServiceService } from './shared/Service/Users/user-service.service';
@@ -16,13 +16,13 @@ import { HttpClientModule } from '@angular/common/http';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
+export class AppComponent implements OnInit, OnDestroy {
   title = 'Frontend';
   userName: string | null = null;
   private tokenSubscription: Subscription | null = null;
   isManager = false; // Flag to check if user is a manager
 
-  constructor(private router: Router, private userService: UserServiceService) {}
+  constructor(private router: Router, public userService: UserServiceService) {}
 
   ngOnInit(): void {
     this.tokenSubscription = this.userService.token$.subscribe(token => {

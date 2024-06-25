@@ -15,9 +15,9 @@
   <div class="navbar-login">
     <span *ngIf="!userService.token">שלום אורח</span>
     <span *ngIf="userService.token"> {{ userName }} :שלום</span>
-    <button mat-flat-button *ngIf="!userService.token" routerLink="/login">{{ getButtonText() }}</button>
-    <button mat-flat-button *ngIf="userService.token" (click)="logout()">{{ getButtonText() }}</button>
-  </div>
+    <button mat-flat-button *ngIf="!userService.token" routerLink="/login">Login</button>
+    <button mat-flat-button *ngIf="userService.token" (click)="logout()">Logout</button>
+   </div>
 </nav>
 
 <router-outlet></router-outlet>
