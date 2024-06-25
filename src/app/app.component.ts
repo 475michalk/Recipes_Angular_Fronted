@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { LoginComponent } from './component/login/login.component';
 import { UserServiceService } from './shared/Service/Users/user-service.service';
-import { CommonModule, NgIf } from '@angular/common';
+import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { jwtDecode } from 'jwt-decode';
 import { BrowserModule } from '@angular/platform-browser';
@@ -12,7 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterModule, RouterOutlet, LoginComponent, CommonModule, HttpClientModule,NgIf],
+  imports: [RouterModule, RouterOutlet, LoginComponent, CommonModule, HttpClientModule,NgIf,NgFor],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

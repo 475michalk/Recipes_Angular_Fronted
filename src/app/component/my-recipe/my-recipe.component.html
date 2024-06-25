@@ -1,33 +1,31 @@
 <div class="grid-container">
-    <div *ngFor="let recipe of recipes" class="card">
-      <div class="card-header">
-        <h4 class="card-title">{{ recipe.nameRecipe }}</h4>
-        <p class="card-subtitle">{{ recipe.descriptionRecipe }}</p>
-        <!-- <p class="card-subtitle">{{ recipe.categoryName.join(', ') }}</p> -->
-      </div>
-      <app-slideshow *ngIf="recipe.image && recipe.image.length > 0" [previewImages]="getImageUrls(recipe)"></app-slideshow>
-      <div class="card-content">
-        <p>משך הכנה: {{ recipe.preparationTime | time }}</p>
-        <!-- <div  class="card"> -->
-          <!-- Other card content -->
-          <p style="direction:rtl ;">דרגת קושי:
-            <span *appStars="recipe.level">★</span> 
-          </p>
-          <!-- Other card content -->
-        <!-- </div> -->
-        
-            </div>
-      <div class="card-actions">
-        <button class="card-button" (click)="openRecipeModal(recipe)">הצגת מתכון</button>
-      </div>
+  <div *ngFor="let recipe of recipes" class="card">
+    <div class="card-header">
+      <h4 class="card-title">{{ recipe.nameRecipe }}</h4>
+      <p class="card-subtitle">{{ recipe.descriptionRecipe }}</p>
+      <!-- <p class="card-subtitle">{{ recipe.categoryName.join(', ') }}</p> -->
     </div>
-  </div>
-  
-  <div class="modal" *ngIf="showModal">
-    <div class="modal-background" (click)="closeModal()"></div>
-    <div class="modal-content">
-      <button class="close-button" (click)="closeModal()">X</button>
-      <app-one-recipes [recipe]="selectedRecipe"></app-one-recipes>
+    <app-slideshow *ngIf="recipe.image && recipe.image.length > 0"
+      [previewImages]="getImageUrls(recipe)"></app-slideshow>
+    <div class="card-content">
+      <p>משך הכנה: {{ recipe.preparationTime | time }}</p>
+      <!-- <div  class="card"> -->
+      <!-- Other card content -->
+      <p style="direction:rtl ;">דרגת קושי:
+        <span *appStars="recipe.level">★</span>
+      </p>
+      <!-- Other card content -->
     </div>
+
+  <div class="card-actions">
+    <button class="card-button" (click)="openRecipeModal(recipe)">הצגת מתכון</button>
   </div>
-  
+</div>
+
+<div class="modal" *ngIf="showModal">
+  <div class="modal-background" (click)="closeModal()"></div>
+  <div class="modal-content">
+    <button class="close-button" (click)="closeModal()">X</button>
+    <app-one-recipes [recipe]="selectedRecipe"></app-one-recipes>
+  </div>
+</div>

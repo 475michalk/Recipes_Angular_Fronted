@@ -5,13 +5,14 @@ import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { SlideshowComponent } from '../slideshow/slideshow.component';
 import { OneRecipesComponent } from '../one-recipes/one-recipes.component';
-import { TimePipe } from '../../shared/pipe/time.pipe';
 import { StarsDirective } from '../../directive/stars.directive';
+import { TimePipe } from '../../pipe/time.pipe';
+import { BrowserModule } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-my-recipe',
   standalone: true,
-  imports: [CommonModule, RouterModule, OneRecipesComponent, NgIf, SlideshowComponent, StarsDirective, TimePipe, NgFor],
+  imports: [CommonModule, RouterModule, OneRecipesComponent, SlideshowComponent, StarsDirective, TimePipe],
   templateUrl: './my-recipe.component.html',
   styleUrl: './my-recipe.component.scss'
 })

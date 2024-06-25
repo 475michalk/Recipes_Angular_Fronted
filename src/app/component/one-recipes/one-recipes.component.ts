@@ -3,8 +3,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { SlideshowComponent } from '../slideshow/slideshow.component';
 import { RecipeServiceService } from '../../shared/Service/Recipe/recipe-service.service';
 import { UserServiceService } from '../../shared/Service/Users/user-service.service';
-import { TimePipe } from '../../shared/pipe/time.pipe';
 import { StarsDirective } from '../../directive/stars.directive';
+import { TimePipe } from '../../pipe/time.pipe';
 
 @Component({
   selector: 'app-one-recipes',

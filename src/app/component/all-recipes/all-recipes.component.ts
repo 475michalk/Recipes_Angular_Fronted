@@ -5,9 +5,9 @@ import { CommonModule, NgIf } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { OneRecipesComponent } from '../one-recipes/one-recipes.component';
 import { SlideshowComponent } from '../slideshow/slideshow.component';
-import { TimePipe } from '../../shared/pipe/time.pipe';
 import { Recipe } from '../../shared/models/recipes';
 import { StarsDirective } from '../../directive/stars.directive';
+import { TimePipe } from '../../pipe/time.pipe';
 
 @Component({
   selector: 'app-all-recipes',
